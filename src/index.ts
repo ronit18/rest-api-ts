@@ -4,8 +4,8 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import cors from 'cors';
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import mongoose, { mongo } from 'mongoose';
 dotenv.config();
 
 const MONGO_URL = process.env.MONGO_URL!;
