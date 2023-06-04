@@ -25,3 +25,21 @@ export const isAuthenticated = async (
 		return res.sendStatus(400);
 	}
 };
+
+export const isAdmin = async (
+	req: express.Request,
+	res: express.Response,
+	next: express.NextFunction
+) => {
+	try {
+		const { id } = req.params;
+		const currentUserId = get(req, 'identity._id') as string;
+		if (!currentUserId) return res.sendStatus(403);
+		if (currentUserId !== id) return res.sendStatus(401);
+
+		return next();
+	} catch (error) {
+		console.error('Error in middlewares/index.ts(isAdmin) : ', error);
+		return res.sendStatus(400);
+	}
+};
