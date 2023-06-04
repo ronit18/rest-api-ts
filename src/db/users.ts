@@ -20,7 +20,7 @@ export const getUserById = (id: string) => UserModal.findById(id);
 export const createUser = (values: Record<string, any>) =>
 	new UserModal(values).save().then((user) => user.toObject());
 
-export const deleteUser = (id: string) =>
+export const deleteUserById = (id: string) =>
 	UserModal.findByIdAndDelete({
 		_id: id,
 	});
