@@ -1,0 +1,35 @@
+# Node.js dependencies
+node_modules/
+
+# Compiled TypeScript output
+dist/
+
+# Environment variables
+.env
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+
+# Logs
+logs/
+
+# Build artifacts
+build/
+
+# Package lock files
+package-lock.json
+yarn.lock
+
+# Testing frameworks
+coverage/
+
+# Mac OS specific files
+.DS_Store
+
+# Miscellaneous
+*.log
+*.bak
+*.swp
+*.tmp
+Thumbs.db
