@@ -1,4 +1,9 @@
-import { getUser, deleteUserById } from '../db/users';
+import {
+	getUser,
+	deleteUserById,
+	updateUserById,
+	getUserById,
+} from '../db/users';
 import express from 'express';
 
 export const getAllUsers = async (
@@ -28,6 +33,28 @@ export const deleteUser = async (
 		return res.json(deletedUser);
 	} catch (error) {
 		console.error('Error in controllers/users.ts(deleteUser) : ', error);
+
+		return res.sendStatus(400);
+	}
+};
+
+export const updateUser = async (
+	req: express.Request,
+	res: express.Response
+) => {
+	try {
+		const { username } = req.body;
+		const { id } = req.params;
+		if (!username)
+			return res.status(400).json({ message: 'username is required' });
+
+		const user = await getUserById(id);
+		user.username = username;
+		await user.save();
+
+		return res.status(200).json(user).end;
+	} catch (error) {
+		console.error('Error in controllers/users.ts(updateUser) : ', error);
 
 		return res.sendStatus(400);
 	}
